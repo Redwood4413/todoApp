@@ -14,7 +14,7 @@ headerList.forEach((header) => {
 });
 
 // Listener which removes "Add new todo" window
-backgroundQuery.addEventListener('click', (e: MouseEvent) => {
+backgroundQuery.addEventListener('mousedown', (e: MouseEvent) => {
   if (e.target !== backgroundQuery) return;
 
   backgroundQuery.style.opacity = '0';
