@@ -1,5 +1,5 @@
-import '../scss/style.scss';
 import '../scss/init.scss';
+import '../scss/style.scss';
 import '../scss/cursorShadow.scss';
 import '../scss/addNewTodo.scss';
 import './version';
