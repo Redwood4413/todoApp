@@ -11,7 +11,6 @@ const tagsQuery = document.querySelector('.tags') as HTMLDivElement;
 const displayTag = (tag: string) => {
   const div = document.createElement('div');
   const span = document.createElement('span');
-  span.innerHTML = 'x';
   div.setAttribute('class', 'tag');
   div.innerHTML = `#${tag}`;
   div.append(span);
@@ -19,15 +18,30 @@ const displayTag = (tag: string) => {
 };
 const getTag = () => {
   let tagStr: string = tagInput.value;
+  if (tagStr.charAt(tagStr.length - 1) !== ',') return;
+  if (tagStr.length === 1) return;
+  tagStr = tagStr.slice(0, -1);
+  tagArray.push(tagStr);
+  tagStr = '';
 
-  if (tagStr.charAt(tagStr.length - 1) === ',') {
-    tagStr = tagStr.slice(0, -1);
-    tagArray.push(tagStr);
-    console.log(tagArray);
-    tagStr = '';
-    tagInput.value = tagStr;
-    displayTag(tagArray[tagArray.length - 1]);
-  }
+  tagInput.value = tagStr;
+  displayTag(tagArray[tagArray.length - 1]);
+};
+
+const deleteTagByKeyboard = (event: KeyboardEvent) => {
+  if (event.key !== 'Backspace') return;
+
+  const tagStr: string = tagInput.value;
+
+  if (tagArray.length === 0) return;
+  if (tagStr.length !== 0) return;
+
+  const cleanTag = tagsQuery.lastChild.innerHTML.slice(1, -12);
+
+  tagArray.pop();
+  tagsQuery.removeChild(tagsQuery.lastChild);
+  tagInput.value = cleanTag;
 };
 
 tagInput.addEventListener('input', getTag);
+tagInput.addEventListener('keydown', deleteTagByKeyboard);

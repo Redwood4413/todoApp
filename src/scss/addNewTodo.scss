@@ -77,12 +77,13 @@
           padding-left: 7px;
           border-radius: 10px;
           font-size: small;
+          display: flex;
 
           span {
             background: #0bad77;
             border-radius: 0px 10px 10px 0px;
-            padding: 0px 10px 0px 10px;
-            content: x;
+            padding: 0px 5px 0px 10px;
+            content: url('../icons/close-icon.svg');
 
             &:hover {
               cursor: pointer;
