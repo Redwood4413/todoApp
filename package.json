@@ -3,10 +3,13 @@
   "private": true,
   "version": "0.0.5",
   "type": "module",
+  "homepage": "https://redwood4413.github.io/todoApp",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "yarn run build",
+    "deploy": "github-pages -d dist"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.1",
@@ -18,6 +21,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
+    "gh-pages": "^5.0.0",
     "typescript": "^4.9.4",
     "vite": "^4.0.0"
   },

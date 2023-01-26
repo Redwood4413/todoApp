@@ -92,9 +92,17 @@
         }
       }
 
-      button {
-        place-self: flex-end;
+      .buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
       }
+
+      button[type="clear"] {
+        content: url('../icons/reset-icon.svg');
+        fill: currentColor;
+      }
+
     }
 
 
