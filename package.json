@@ -1,7 +1,8 @@
 {
   "name": "vite-project",
-  "private": true,
-  "version": "0.0.5",
+  "private": false,
+  "license": "MIT",
+  "version": "0.0.6",
   "type": "module",
   "homepage": "https://redwood4413.github.io/todoApp",
   "scripts": {
@@ -9,7 +10,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "predeploy": "yarn run build",
-    "deploy": "github-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.1",

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -21,19 +23,19 @@
   scrollbar-color: #777777 #777777;
 }
 
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 5px;
-}
+// /* Chrome, Edge, and Safari */
+// *::-webkit-scrollbar {
+//   width: 5px;
+// }
 
-*::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0);
-}
+// *::-webkit-scrollbar-track {
+//   background: rgba(255, 255, 255, 0);
+// }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #777777;
-  border-radius: 10px;
-}
+// *::-webkit-scrollbar-thumb {
+//   background-color: #777777;
+//   border-radius: 10px;
+// }
 
 a {
   font-weight: 500;

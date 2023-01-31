@@ -1,7 +1,7 @@
 .background {
   position: fixed;
-  display: flex;
-  overflow: scroll;
+  display: none;
+  overflow-y: auto;
   place-content: center;
   width: 100%;
   height: 100%;
@@ -78,6 +78,7 @@
           border-radius: 10px;
           font-size: small;
           display: flex;
+          transition: transform 0.3s ease-in-out;
 
           span {
             background: #0bad77;
@@ -113,7 +114,8 @@
       border-bottom: 2px solid rgb(72, 66, 66);
       padding: 0px 0px 15px 15px;
 
-      .exit {
+      .close {
+        content: url('../icons/exit-icon.svg');
         fill: currentColor;
         display: flex;
         place-items: center;
@@ -141,6 +143,10 @@
       width: 100vw;
       overflow-x: hidden;
       align-self: flex-end;
+
+      @media (min-width: 600px) {
+        width: 600px;
+      }
     }
   }
 }

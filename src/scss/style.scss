@@ -1,7 +1,8 @@
-@use 'addNewTodo.scss';
-@use 'alertBox.scss';
+@use './addNewTodo.scss';
+@use './alertBox.scss';
 //@use 'cursorShadow.scss';
-@use 'init.scss';
+@use './init.scss';
+@use './leftSideMenu.scss';
 
 
 .main {
