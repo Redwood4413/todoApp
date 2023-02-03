@@ -1,14 +1,24 @@
-export default function dropdownList(event: MouseEvent) {
-  const clickedHeader = event.currentTarget;
-  console.log(clickedHeader);
-  // if (!clickedHeader) return;
+const lists = document.querySelector('.main .lists') as HTMLDivElement;
 
-  // const id: string = clickedHeader.getAttribute('id');
-  // const todos = document.querySelector(`.todos[id='${id}']`);
-  // const arrowSVG = document.querySelector(`svg[id='${id}']`);
+function dropdownList(e: any) {
+  const click = e.target;
 
-  // navigator.vibrate(30);
-  // arrowSVG?.toggleAttribute('rotated');
-  // todos?.toggleAttribute('collapsed');
-  // todos?.toggleAttribute('expanded');
+  if (!click.matches('.header-list')) return;
+  const clickedTodos = click.nextElementSibling;
+  navigator.vibrate(25);
+
+  const img = e.target.querySelector('img');
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  if (clickedTodos.getAttribute('expanded') === 'true') {
+    clickedTodos.setAttribute('expanded', 'false');
+    img.removeAttribute('rotated');
+  } else {
+    clickedTodos.setAttribute('expanded', 'true');
+    img.setAttribute('rotated', '');
+  }
 }
+
+lists.addEventListener('click', dropdownList);
+
+export default { dropdownList };

@@ -31,88 +31,82 @@
         </form>
       </div>
     </div>
-    <div class="left-side-menu">
+    <div class="left-side-menu" expanded="false">
+
       <div class="user">
-        <img src="./src/icons/avatar-icon2.svg" alt="Open bin">
+        <img src="./src/icons/avatar-icon2.svg">
         <span>Redwood</span>
       </div>
 
       <div class="buttons">
-        <div class="label"><span>Functions</span></div>
-        <a class="bin">
-          <img src="./src/icons/bin-icon.svg" alt="Open bin">
+        <label><span>Functions</span></label>
+        <div class="add-new" title="Add new todo">
+          <img src="./src/icons/plus-icon.svg" alt="Add new">
+          <span>Add New</span>
+        </div>
+        <a class="bin" title="Open bin">
+          <img src="./src/icons/bin-icon.svg" alt="Bin">
           <span>Bin</span>
         </a>
-        <div class="random">
-          <img src="./src/icons/random-icon.svg" alt="Generate todos"> <span>Random</span>
+        <div class="random" title="Randomize todos">
+          <img src="./src/icons/random-icon.svg" alt="Todos"> <span>Random</span>
         </div>
-        <div class="label"><span>User</span></div>
-        <a class="logout" href="./logout.html">
-          <img src="./src/icons/settings-icon.svg" alt="Logout"> <span>Settings</span>
+        <label><span>User</span></label>
+        <a class="logout" href="./logout.html" title="Open settings">
+          <img src="./src/icons/settings-icon.svg" alt="Settings"> <span>Settings</span>
         </a>
-        <a class="logout" href="./logout.html">
+        <a class="logout" href="./logout.html" title="Logout">
           <img src="./src/icons/logout-icon.svg" alt="Logout"> <span>Logout</span>
         </a>
       </div>
-      <div class="arrow-wrapper">
-        <img src="./src/icons/arrow-icon.svg" alt="Expand">
+      <div class="arrow-wrapper" title="Toggle menu">
+        <img src="./src/icons/arrow-icon.svg" alt=">">
       </div>
     </div>
     <div class="main">
-      <div class="list">
-        <div class="header-list" id="1">
-          <span>Recent</span>
-
-          <svg id="1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-            class="bi bi-chevron-bar-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M3.646 4.146a.5.5 0 0 1 .708 0L8 7.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708z" />
-          </svg>
-        </div>
-        <div class="todos" id="1" collapsed>
-          <div class="todo">
-            <div class="time-ago">
-              Added: 32 minutes ago
-            </div>
+      <div class="lists">
+        <div class="list">
+          <div class="header-list">
+            <span>Recents</span>
+            <img src="./src/icons/arrow-icon2.svg">
           </div>
-          <div class="todo">dsa</div>
-          <div class="todo">asd</div>
-          <div class="todo">dsa</div>
-          <div class="todo">asd</div>
+          <div class="todos" expanded="true">
+            <div class="todo">
+              <div class="time-ago">
+                Added: 32 minutes ago
+              </div>
+            </div>
+            <div class="todo">dsa</div>
+            <div class="todo">asd</div>
+            <div class="todo">dsa</div>
+            <div class="todo">asd</div>
+          </div>
         </div>
-      </div>
-      <div class="list">
-        <div class="header-list" id="2">
-          <span>Daily</span>
-          <svg id="2" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-            class="bi bi-chevron-bar-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M3.646 4.146a.5.5 0 0 1 .708 0L8 7.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708z" />
-          </svg>
+        <div class="list">
+          <div class="header-list">
+            <span>Daily</span>
+            <img src="./src/icons/arrow-icon2.svg">
+          </div>
+          <div class="todos">
+            <div class="todo">asd</div>
+            <div class="todo">dsa</div>
+            <div class="todo">asd</div>
+            <div class="todo">dsa</div>
+            <div class="todo">asd</div>
+          </div>
         </div>
-        <div class="todos" id="2" collapsed>
-          <div class="todo">asd</div>
-          <div class="todo">dsa</div>
-          <div class="todo">asd</div>
-          <div class="todo">dsa</div>
-          <div class="todo">asd</div>
-        </div>
-      </div>
-      <div class="list">
-        <div class="header-list" id="3">
-          <span>Next Week</span>
-          <svg id="3" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-            class="bi bi-chevron-bar-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M3.646 4.146a.5.5 0 0 1 .708 0L8 7.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708z" />
-          </svg>
-        </div>
-        <div class="todos" id="3" collapsed>
-          <div class="todo">asd</div>
-          <div class="todo">dsa</div>
-          <div class="todo">asd</div>
-          <div class="todo">dsa</div>
-          <div class="todo">asd</div>
+        <div class="list">
+          <div class="header-list">
+            <span>Next Week</span>
+            <img src="./src/icons/arrow-icon2.svg">
+          </div>
+          <div class="todos">
+            <div class="todo">asd</div>
+            <div class="todo">dsa</div>
+            <div class="todo">asd</div>
+            <div class="todo">dsa</div>
+            <div class="todo">asd</div>
+          </div>
         </div>
       </div>
     </div>
