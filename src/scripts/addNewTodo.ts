@@ -5,8 +5,6 @@ const textAreaQuery = document.querySelector("textarea[id='description']") as HT
 let tagArray: string[] = [];
 const tagInput = document.querySelector("input[id='tags']") as HTMLInputElement;
 const tagsQuery = document.querySelector('.tags') as HTMLDivElement;
-const form = document.querySelector('.todo-wrapper form') as HTMLFormElement;
-const todoWrapper = document.querySelector('.todo-wrapper') as HTMLDivElement;
 
 const displayTag = (tag: string) => {
   const div = document.createElement('div');
@@ -74,7 +72,7 @@ const closeTodoWindow = (e: MouseEvent) => {
   }, 300);
 };
 
-backgroundQuery.addEventListener('mousedown', closeTodoWindow);
+backgroundQuery.addEventListener('click', closeTodoWindow);
 
 const clearButton = document.querySelector("form .buttons button[type='button'") as HTMLButtonElement;
 

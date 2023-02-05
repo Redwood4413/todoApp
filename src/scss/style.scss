@@ -52,23 +52,107 @@
   }
 
   .todos {
-    flex-wrap: wrap;
-    gap: 20px;
-    display: flex;
+    display: grid;
+    gap: 10px;
     overflow: hidden;
     height: 0;
     transition: max-height 0.5s ease-in-out;
+    grid-template-columns: repeat(var(--columns), 1fr);
 
     &[expanded='true'] {
       height: fit-content;
     }
 
     .todo {
-      border: 1px solid white;
-      padding: 15px;
-      height: 300px;
-      width: 250px;
-      background: #424242;
+      display: grid;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px;
+      aspect-ratio: 9/11;
+      overflow-y: scroll;
+      border-radius: 10px;
+      border: 1px solid rgb(117, 117, 117);
+      background: #191616;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+
+      &:hover::before {
+        opacity: 1;
+      }
+
+      &::before {
+        background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(93, 93, 93, 0.364),
+            transparent 40%);
+        border-radius: inherit;
+        content: "";
+        height: 100%;
+        left: 0px;
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+
+      .button {
+        visibility: hidden;
+        position: absolute;
+        transition: opacity 0.3s ease-in-out;
+        background: rgb(85, 79, 79);
+        right: 10px;
+        top: 10px;
+        border-radius: 50%;
+        display: flex;
+        place-items: center;
+
+        &:hover {
+          border: 1px solid white;
+        }
+
+        img {
+          height: 30px;
+          width: 30px;
+        }
+      }
+
+      &:hover {
+        .button {
+          visibility: visible;
+        }
+      }
+
+      h2 {
+        justify-self: center;
+        margin: 5px;
+      }
+
+      .date {
+        color: rgb(149, 144, 144);
+        font-size: smaller;
+        margin: 5px;
+        place-self: flex-end;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 5px 0px 5px 0px;
+
+        span {
+          background: #0bad77;
+          display: flex;
+          height: 25px;
+          place-items: center;
+          padding: 0px 7px 0px 7px;
+          border-radius: 10px;
+          font-size: small;
+          display: flex;
+        }
+      }
     }
   }
 }
@@ -86,6 +170,21 @@
     .form-wrapper {
       border-radius: 0px;
       border: 0;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .main {
+    .lists {
+      .list {
+        .todos {
+          .todo {
+            font-size: small;
+
+          }
+        }
+      }
     }
   }
 }
