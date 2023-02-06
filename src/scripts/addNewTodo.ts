@@ -72,15 +72,22 @@ const closeTodoWindow = (e: MouseEvent) => {
   }, 300);
 };
 
-backgroundQuery.addEventListener('click', closeTodoWindow);
+backgroundQuery.addEventListener('mousedown', closeTodoWindow);
 
-const clearButton = document.querySelector("form .buttons button[type='button'") as HTMLButtonElement;
+const resetButton = document.querySelector("form .buttons button[type='button'") as HTMLButtonElement;
 
-clearButton.addEventListener('click', () => {
+resetButton.addEventListener('click', () => {
   const title = document.querySelector(".todo-wrapper form input[id='title'") as HTMLInputElement;
   title.value = '';
   textAreaQuery.value = '';
+  tagInput.value = '';
   tagArray = [];
+
+  const tagsToDelete = document.querySelectorAll('form .tags');
+
+  tagsToDelete.forEach((el) => {
+    el.remove();
+  });
 });
 
 tagInput.addEventListener('input', getTagFromInput);
