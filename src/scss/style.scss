@@ -5,9 +5,10 @@
 @use './topBar.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Noto Sans, Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;

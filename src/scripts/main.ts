@@ -3,8 +3,8 @@ import './version';
 import './addNewTodo';
 import './leftSideMenu';
 import './dropdownList';
-import './todoGrid';
 import './displayTodos';
+import './todoGrid';
 
 const addNewTodo = document.querySelector('.lists .list .todos .todo') as HTMLDivElement;
 

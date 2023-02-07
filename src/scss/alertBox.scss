@@ -1,0 +1,56 @@
+.alert-box {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  top: 10px;
+  left: 50%;
+  z-index: 999;
+  min-width: 30vw;
+
+  .alert {
+    display: flex;
+    justify-content: center;
+    animation: left-to-stop 0.3s ease-out forwards, stop-to-right 0.3s ease-in forwards 3s;
+    padding: 0px 15px 0px 15px;
+
+    span {
+      padding: 10px;
+      display: flex;
+      justify-self: center;
+
+      &[id="close"] {
+        padding: 5px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        content: url('../icons/close-icon.svg');
+
+        &:hover {
+          background: #a3244c;
+        }
+      }
+    }
+  }
+}
+
+@keyframes left-to-stop {
+  from {
+    transform: translateX(-300%);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes stop-to-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(200%);
+  }
+
+}

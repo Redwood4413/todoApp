@@ -1,0 +1,134 @@
+.left-side-menu {
+  font-family: 'Mukta', sans-serif;
+  font-size: large;
+  height: 100vh;
+  width: 50px;
+  position: fixed;
+  background: linear-gradient(45deg, rgb(23, 19, 19) 0%, rgb(23, 23, 32) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+  overflow: hidden;
+  justify-content: space-between;
+
+  & *:not([style*='position: absolute']) {
+    overflow: hidden;
+  }
+
+  span {
+    display: none;
+  }
+
+  &[expanded='true'] {
+    width: 300px;
+    padding: 4% 0% 4% 0%;
+
+    .user {
+      gap: 30px;
+
+      img {
+        height: 70px;
+        width: 70px;
+        border-radius: 30%;
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      background: rgb(191, 191, 191);
+      border-radius: 0;
+      height: 45px;
+      width: 45px;
+    }
+  }
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+      display: flex;
+      color: rgb(122, 121, 121);
+      width: 170px;
+      border-bottom: 1px solid rgb(122, 121, 121);
+      justify-content: center;
+    }
+
+    & div,
+    & a {
+      width: 200px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      color: currentColor;
+      height: 45px;
+      cursor: pointer;
+      border-radius: 15px;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: rgb(61, 61, 61);
+
+      }
+
+      span {
+        width: 45%;
+        color: rgb(210, 210, 210);
+      }
+
+      img {
+        padding: 5px;
+        height: 35px;
+      }
+    }
+  }
+
+  .arrow-wrapper {
+    display: flex;
+    padding: 5px;
+    height: 100px;
+    width: 50px;
+    cursor: pointer;
+    //background: rgb(67, 66, 66);
+    transition: background 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    &[hide='true'] {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:hover {
+      background: rgb(45, 41, 41);
+    }
+  }
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+  .left-side-menu {
+    width: 0;
+
+    .arrow-wrapper {
+      display: none;
+    }
+  }
+
+  .top-bar {
+    height: 60px;
+  }
+
+  .main {
+    margin-top: 60px;
+  }
+}

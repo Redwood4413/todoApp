@@ -1,10 +1,74 @@
+// @ts-nocheck
 import displayAlert from './alerts';
-
-const textAreaQuery = document.querySelector("textarea[id='description']") as HTMLTextAreaElement;
+import displayTodo from './displayTodos';
 
 let tagArray: string[] = [];
+
+const form = document.querySelector('.background .todo-wrapper form') as HTMLFormElement;
+const titleInput = document.querySelector(".todo-wrapper form input[id='title'") as HTMLInputElement;
+const textAreaQuery = document.querySelector("textarea[id='description']") as HTMLTextAreaElement;
 const tagInput = document.querySelector("input[id='tags']") as HTMLInputElement;
 const tagsQuery = document.querySelector('.tags') as HTMLDivElement;
+
+// localStorage.removeItem('todos');
+
+interface TodoObject {
+  id: number;
+  title: string;
+  text: string;
+  createdAt: string;
+  tags: string[];
+  isComplete: boolean;
+}
+
+const inputValidation = (): boolean => {
+  if (!titleInput.value) {
+    displayAlert('Title can\'t be empty.', '#d11717');
+    return false;
+  }
+  if (!textAreaQuery.value) {
+    displayAlert('Description can\'t be empty.', '#d11717');
+    return false;
+  }
+  return true;
+};
+
+const createNewTodo = (e: any) => {
+  e.preventDefault();
+
+  if (!inputValidation()) return;
+  let parsedJSON = JSON.parse(localStorage.getItem('todos'));
+
+  const now = new Date();
+  const dateString = now.toLocaleDateString();
+  const timeString = now.toLocaleTimeString();
+
+  let id: number = 0;
+  if (parsedJSON) id = parsedJSON.todos.length;
+
+  const newTodo: TodoObject = {
+    id,
+    title: titleInput.value,
+    text: textAreaQuery.value,
+    createdAt: `${timeString} ${dateString}`,
+    tags: [],
+    isComplete: false,
+  };
+
+  if (!parsedJSON) {
+    parsedJSON = { todos: [newTodo] };
+  } else {
+    parsedJSON.todos.push(newTodo);
+  }
+  console.log(newTodo);
+
+  displayTodo(newTodo);
+  localStorage.setItem('todos', JSON.stringify(parsedJSON));
+
+  displayAlert('Your todo has been added.', '#2c9609');
+};
+
+form.addEventListener('submit', createNewTodo);
 
 const displayTag = (tag: string) => {
   const div = document.createElement('div');
@@ -33,7 +97,13 @@ const getTagFromInput = () => {
   // prevent typing multiple comma inside input and multiple tags
   if (tagArray.includes(tagStr)) {
     tagInput.value = tagInput.value.slice(0, -1);
-    displayAlert(`Tag "${tagStr}" already exists.`);
+    displayAlert(`Tag "${tagStr}" already exists.`, '#d11717');
+    return;
+  }
+
+  if (tagArray.length > 10) {
+    tagInput.value = tagInput.value.slice(0, -1);
+    displayAlert(`Number of tags can't be greater than ${tagArray.length}`, '#d11717');
     return;
   }
 
@@ -77,8 +147,7 @@ backgroundQuery.addEventListener('mousedown', closeTodoWindow);
 const resetButton = document.querySelector("form .buttons button[type='button'") as HTMLButtonElement;
 
 resetButton.addEventListener('click', () => {
-  const title = document.querySelector(".todo-wrapper form input[id='title'") as HTMLInputElement;
-  title.value = '';
+  titleInput.value = '';
   textAreaQuery.value = '';
   tagInput.value = '';
   tagArray = [];
