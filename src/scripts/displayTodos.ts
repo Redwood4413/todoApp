@@ -10,6 +10,9 @@ interface TodoObject {
   text: string;
   createdAt: string;
   tags: string[];
+  state: {
+    createdAt: string;
+  }
 }
 
 const displayTodo = (todoObject: TodoObject) => {
@@ -17,6 +20,7 @@ const displayTodo = (todoObject: TodoObject) => {
   console.log(todoObject);
   const todoDiv = document.createElement('div');
   todoDiv.setAttribute('class', 'todo');
+  todoDiv.setAttribute('title', 'Show todo');
   todoDiv.innerHTML = `
       <div class="buttons">
         <div class="button" title="Move to Bin">
@@ -31,7 +35,7 @@ const displayTodo = (todoObject: TodoObject) => {
       <div class="tags">
         ${todoObject.tags.map((tag: string) => `<span>${tag}</span>`).join('')}
       </div>
-      <span class="date">${todoObject.createdAt}</span>
+      <span class="date">${todoObject.state.createdAt}</span>
     `;
   return todos.append(todoDiv);
 };

@@ -16,9 +16,12 @@ interface TodoObject {
   id: number;
   title: string;
   text: string;
-  createdAt: string;
   tags: string[];
-  isComplete: boolean;
+  state: {
+    isComplete: boolean;
+    pendingDelete: boolean;
+    createdAt: string;
+  }
 }
 
 const inputValidation = (): boolean => {
@@ -31,6 +34,17 @@ const inputValidation = (): boolean => {
     return false;
   }
   return true;
+};
+const clearInputs = () => {
+  titleInput.value = '';
+  textAreaQuery.value = '';
+  tagInput.value = '';
+  tagArray = [];
+
+  const tagsToDelete = document.querySelectorAll('form .tags .tag');
+  tagsToDelete.forEach((el) => {
+    el.remove();
+  });
 };
 
 const createNewTodo = (e: any) => {
@@ -50,9 +64,12 @@ const createNewTodo = (e: any) => {
     id,
     title: titleInput.value,
     text: textAreaQuery.value,
-    createdAt: `${timeString} ${dateString}`,
-    tags: [],
-    isComplete: false,
+    tags: tagArray,
+    state: {
+      isComplete: false,
+      pendingDelete: false,
+      createdAt: `${timeString} ${dateString}`,
+    },
   };
 
   if (!parsedJSON) {
@@ -60,11 +77,11 @@ const createNewTodo = (e: any) => {
   } else {
     parsedJSON.todos.push(newTodo);
   }
-  console.log(newTodo);
 
   displayTodo(newTodo);
   localStorage.setItem('todos', JSON.stringify(parsedJSON));
 
+  clearInputs();
   displayAlert('Your todo has been added.', '#2c9609');
 };
 
@@ -146,19 +163,7 @@ backgroundQuery.addEventListener('mousedown', closeTodoWindow);
 
 const resetButton = document.querySelector("form .buttons button[type='button'") as HTMLButtonElement;
 
-resetButton.addEventListener('click', () => {
-  titleInput.value = '';
-  textAreaQuery.value = '';
-  tagInput.value = '';
-  tagArray = [];
-
-  const tagsToDelete = document.querySelectorAll('form .tags');
-
-  tagsToDelete.forEach((el) => {
-    el.remove();
-  });
-});
-
+resetButton.addEventListener('click', clearInputs);
 tagInput.addEventListener('input', getTagFromInput);
 tagInput.addEventListener('keydown', deleteTagByKeyboard);
 

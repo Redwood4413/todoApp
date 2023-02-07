@@ -8,7 +8,7 @@ const displayTagAlert = (alertMessage: string, bgColor: '#2c9609' | '#d11717') =
   alert.innerHTML = `<span>${alertMessage}</span>`;
   alert.style.backgroundColor = bgColor;
   alert.appendChild(span);
-  alertBox.append(alert);
+  alertBox.prepend(alert);
 
   // Listener, which allows to hide clicked alert
   span.addEventListener('click', () => {
